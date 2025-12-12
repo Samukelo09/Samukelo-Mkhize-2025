@@ -1,0 +1,74 @@
+# PangramChecker — Code Explanation
+
+This Python class checks whether a given text is a pangram, a sentence that contains every letter of the alphabet at least once.
+
+---
+
+## Class Overview: `PangramChecker`
+
+The class is designed to:
+
+- Check if a given text contains all letters of a specified alphabet.
+- Handle case insensitivity by converting text to lowercase.
+- Compare the set of characters in the text against the set of alphabet letters.
+- Return a boolean result indicating whether the text is a pangram.
+
+---
+
+## Code Breakdown
+
+### 1. Main Method: `is_pangram`
+
+```python
+def is_pangram(self, str1: str, alphabet: str = string.ascii_lowercase) -> bool:
+    # Check if the given text is a pangram
+```
+
+- Parameters:
+- - `str1`: The input text to check
+- - `alphabet`: The alphabet to check against (defaults to English lowercase letters)
+- Returns: `True` if all alphabet letters appear in the text, False otherwise
+
+---
+
+### 2. Creating the Text Set
+
+```python
+# Create a set of characters in the text, converted to lowercase
+text_set = set(str1.lower())
+```
+
+How it works:
+
+- `str1.lower()` converts the entire text to lowercase for case-insensitive comparison
+- `set()` creates a collection of unique characters from the text
+- Example: `"Hello"` → `{'h', 'e', 'l', 'o'}`
+
+---
+
+### 3. Creating the Alphabet Set
+
+```python
+# Convert the alphabet to a set for comparison
+alphabet_set = set(alphabet)
+```
+
+How it works:
+
+- Converts the alphabet string (default: `'abcdefghijklmnopqrstuvwxyz'`) to a set
+- Creates `{'a', 'b', 'c', ..., 'z'}` for the English alphabet
+
+---
+
+### 4. Performing the Check
+
+```python
+# Check if all alphabet letters are in the text set
+return alphabet_set.issubset(text_set)
+```
+
+How it works:
+
+- `issubset()` checks if all elements of `alphabet_set` are present in `text_set`
+- Returns `True` only when the text contains every letter of the alphabet
+- Alternative syntax: `return alphabet_set <= text_set`
